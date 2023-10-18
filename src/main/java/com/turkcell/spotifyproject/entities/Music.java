@@ -1,5 +1,6 @@
 package com.turkcell.spotifyproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -19,4 +20,9 @@ public class Music {
   private UUID id;
 
   private String name;
+
+  @ManyToOne
+  @JoinColumn(name = "playlist_id")
+  @JsonIgnore
+  private Playlist playlist;
 }
