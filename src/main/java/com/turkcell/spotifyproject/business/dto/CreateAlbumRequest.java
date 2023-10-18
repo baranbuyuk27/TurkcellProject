@@ -1,6 +1,6 @@
 package com.turkcell.spotifyproject.business.dto;
 
-import com.turkcell.spotifyproject.entities.Artist;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,5 +12,5 @@ import lombok.Setter;
 @Setter
 public class CreateAlbumRequest {
   private String name;
-  private Artist artist;
+  private UUID artistId;
 }
