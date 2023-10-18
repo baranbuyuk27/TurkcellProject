@@ -1,12 +1,13 @@
 package com.turkcell.spotifyproject.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.awt.*;
+import java.util.Date;
+import java.util.List;
 import java.util.UUID;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import lombok.*;
 
 @Entity
 @AllArgsConstructor
@@ -16,13 +17,32 @@ import lombok.Setter;
 @Table(name = "musics")
 public class Music {
   @Id
+  @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private UUID id;
+  private long id;
 
+  @Column(name = "name")
   private String name;
 
-  @ManyToOne
-  @JoinColumn(name = "playlist_id")
-  @JsonIgnore
-  private Playlist playlist;
+  @Column(name = "created_date")
+  private Date createdDate;
+
+  @Column(name = "link")
+  private String link;
+
+  @Column(name = "likes")
+  private int numberOfLikes;
+
+  @Column(name = "photosOfPath")
+  private String photo;
+
+  @Column(name = "duration")
+  private float duration;
+
+  /*@ManyToMany(cascade = {CascadeType.ALL})
+  @JoinTable(
+      name = "musics_artists",
+      joinColumns = {@JoinColumn(name = "music_id")},
+      inverseJoinColumns = {@JoinColumn(name = "artist_id")})
+  private List<Artist> artists;*/
 }
