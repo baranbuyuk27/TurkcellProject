@@ -1,19 +1,15 @@
 package com.turkcell.spotifyproject.entities;
 
 import jakarta.persistence.*;
-
 import java.awt.*;
 import java.util.Date;
-import java.util.List;
-import java.util.UUID;
-
 import lombok.*;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
+@Builder
 @Table(name = "musics")
 public class Music {
   @Id
