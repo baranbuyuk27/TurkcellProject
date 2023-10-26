@@ -5,37 +5,30 @@ import com.turkcell.spotifyproject.business.dto.PlaylistDto.PlaylistForAddDto;
 import com.turkcell.spotifyproject.business.dto.PlaylistDto.PlaylistForListingDto;
 import com.turkcell.spotifyproject.business.dto.PlaylistDto.PlaylistForUpdateDto;
 import com.turkcell.spotifyproject.repositories.PlaylistRepository;
+import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 @Service
+@RequiredArgsConstructor
 public class PlaylistManager implements PlaylistService {
 
-    @Autowired
-     private PlaylistRepository playlistRepository;
+  private final PlaylistRepository playlistRepository;
 
-    private ModelMapper modelMapper;
+  private ModelMapper modelMapper;
 
+  @Override
+  public void addPlaylist(PlaylistForAddDto request) {}
 
-    @Override
-    public void addPlaylist(PlaylistForAddDto request) {
+  public List<PlaylistForListingDto> getAll() {
+    // return playlistRepository.getForListing();
+    return null;
+  }
 
-    }
+  @Override
+  public void updatePlaylist(int id, PlaylistForUpdateDto playlist) {}
 
-    @Override
-    public List<PlaylistForListingDto> getAll() {
-        return playlistRepository.getForListing();
-    }
-
-    @Override
-    public void updatePlaylist(int id, PlaylistForUpdateDto playlist) {
-
-    }
-
-    @Override
-    public void delete(int id) {
-
-    }
+  @Override
+  public void delete(int id) {}
 }
