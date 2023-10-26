@@ -1,12 +1,14 @@
 package com.turkcell.spotifyproject.entities;
 
 import jakarta.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -14,11 +16,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "artists")
-public class Artist {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+public class Artist extends User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String name;
+    @OneToMany
+    private List<Music> musics;
 
-  private String name;
-  @OneToMany private Set<Music> musics = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Album> albums = new HashSet<>();
+
 }

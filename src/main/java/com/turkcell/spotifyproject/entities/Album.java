@@ -1,13 +1,14 @@
 package com.turkcell.spotifyproject.entities;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
 @AllArgsConstructor
@@ -16,18 +17,18 @@ import lombok.Setter;
 @Setter
 @Table(name = "albums")
 public class Album {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private UUID id;
 
-  private String name;
-  private LocalDate releaseDate;
-  private long numberOfLikes;
+    private String name;
+    private LocalDate releaseDate;
+    private long numberOfLikes;
+    
+    @Column(name = "artist_id")
+    private int artistId;
+    @OneToMany(mappedBy = "album")
+    private List<Music> musics;
 
-  @ManyToOne
-  @JoinColumn(name = "artist id")
-  private Artist artist;
 
-  @OneToMany(mappedBy = "album")
-  private List<Music> musics;
 }

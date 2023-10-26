@@ -28,5 +28,8 @@ public class Playlist {
     @OneToMany(mappedBy = "playlist")
     private List<Music> musics;
 
+    
+    private int listenerId;
+
 
 }
