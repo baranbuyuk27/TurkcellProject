@@ -29,16 +29,14 @@ public class Music {
   @Column(name = "likes")
   private int numberOfLikes;
 
-  @Column(name = "photosOfPath")
+  @Column(name = "pathOfPhoto")
   private String photo;
 
   @Column(name = "duration")
   private float duration;
 
-  /*@ManyToMany(cascade = {CascadeType.ALL})
-  @JoinTable(
-      name = "musics_artists",
-      joinColumns = {@JoinColumn(name = "music_id")},
-      inverseJoinColumns = {@JoinColumn(name = "artist_id")})
-  private List<Artist> artists;*/
+  @Column(name = "album_id") // all the songs may not belong an album
+  private int albumId;
+
+  @ManyToOne private Artist artist;
 }
