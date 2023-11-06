@@ -53,6 +53,26 @@ public class MusicServiceImpl implements MusicService {
     return musicRepository.getForById(id);
   }
 
+  @Override
+  public List<MusicForListingDto> search(String name) {
+    return musicRepository.search(name);
+  }
+
+  @Override
+  public List<MusicForListingDto> getByNumberOfLikesDesc() {
+    return musicRepository.findByNumberOfLikesDesc();
+  }
+
+  @Override
+  public List<MusicForListingDto> getByAlbumId(int albumId) {
+    return musicRepository.findByAlbumId(albumId);
+  }
+
+  @Override
+  public List<MusicForListingDto> getMusicsByArtistId(int artistId) {
+    return musicRepository.findMusicsByArtistId(artistId);
+  }
+
   private Music returnMusicByIdIfExist(Long id) {
     Music music = musicRepository.findById(id).orElse(null);
     if (music == null) throw new NullPointerException();

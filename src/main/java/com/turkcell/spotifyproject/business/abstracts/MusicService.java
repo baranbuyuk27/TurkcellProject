@@ -16,4 +16,12 @@ public interface MusicService {
   List<MusicForListingDto> getAll();
 
   MusicForGetByIdDto getById(Long id);
+
+  List<MusicForListingDto> search(String name);
+
+  List<MusicForListingDto> getByNumberOfLikesDesc();
+
+  List<MusicForListingDto> getByAlbumId(int albumId);
+
+  List<MusicForListingDto> getMusicsByArtistId(int artistId);
 }

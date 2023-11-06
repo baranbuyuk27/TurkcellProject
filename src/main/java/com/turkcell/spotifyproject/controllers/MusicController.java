@@ -46,4 +46,24 @@ public class MusicController {
     musicService.add(request);
     return new ResponseEntity("Muzik eklendi", HttpStatus.CREATED);
   }
+
+  @GetMapping("search")
+  List<MusicForListingDto> search(@RequestParam("name") String name) {
+    return musicService.search(name);
+  }
+
+  @GetMapping("getByNumberOfLikesDesc")
+  List<MusicForListingDto> getByNumberOfLikesDesc() {
+    return musicService.getByNumberOfLikesDesc();
+  }
+
+  @GetMapping("getByAlbumId")
+  List<MusicForListingDto> getByAlbumId(@RequestParam("albumId") int albumId) {
+    return musicService.getByAlbumId(albumId);
+  }
+
+  @GetMapping("getMusicsByArtistId")
+  List<MusicForListingDto> getMusicsByArtistId(@RequestParam("artistId") int artistId) {
+    return musicService.getMusicsByArtistId(artistId);
+  }
 }
